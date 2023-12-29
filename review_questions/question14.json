@@ -1,0 +1,7 @@
+[
+  {"id": 1, "name": "Original", "spiciness": "Very Spicy"},
+  {"id": 2, "name": "Cheese", "spiciness": "Spicy"},
+  {"id": 3, "name": "Carbonara", "spiciness": "Moderate"},
+  {"id": 4, "name": "Curry", "spiciness": "Spicy"},
+  {"id": 5, "name": "Nuclear", "spiciness": "Extremely Spicy"}
+]

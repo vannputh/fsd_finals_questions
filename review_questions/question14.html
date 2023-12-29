@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="ramenApp">
+
+<head>
+  <title>AngularJS Buldak Ramen List</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body ng-controller="ramenController">
+
+<h1>Buldak Ramen Flavors</h1>
+
+<label>Filter by Spiciness:
+  <select ng-model="spicinessFilter">
+    <option value="">All</option>
+    <option ng-repeat="ramen in ramenFlavors" value="{{ramen.spiciness}}">{{ramen.spiciness}}</option>
+  </select>
+</label>
+
+<label>Sort by:
+  <select ng-model="sortType">
+    <option value="name">Name</option>
+    <option value="spiciness">Spiciness</option>
+  </select>
+</label>
+
+<label>Sort order:
+  <select ng-model="sortReverse">
+    <option value="false">Ascending</option>
+    <option value="true">Descending</option>
+  </select>
+</label>
+
+<ul>
+  <li ng-repeat="ramen in filteredRamen | orderBy:sortType:sortReverse | filter: {spiciness: spicinessFilter}">
+    {{ramen.name}} - {{ramen.spiciness}}
+  </li>
+</ul>
+
+<script>
+  var app = angular.module('ramenApp', []);
+
+  app.controller('ramenController', function ($scope, $http) {
+    $http.get('question14.json').then(function (response) {
+      $scope.ramenFlavors = response.data;
+      $scope.filteredRamen = $scope.ramenFlavors;
+    });
+  });
+</script>
+
+</body>
+
+</html>

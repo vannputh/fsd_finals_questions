@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Single Page App with AngularJS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+      overflow: hidden;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: #000;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+<ul>
+  <li><a ng-href="#/">Home</a></li>
+  <li><a ng-href="#/about">About</a></li>
+</ul>
+
+<div ng-view></div>
+
+
+<script>
+
+  var app = angular.module('myApp', ['ngRoute']);
+
+  app.config(function($routeProvider) {
+    $routeProvider
+            .when('/', {
+              template: '<h1>Welcome!</h1><p>This is the homepage.</p>'
+            })
+            .when('/about', {
+              template: '<h1>About Us</h1><p>Learn more about us here.</p>'
+            })
+            .otherwise({ redirectTo: '/' });
+  });
+
+</script>
+
+</body>
+</html>
